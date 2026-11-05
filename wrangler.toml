@@ -1,0 +1,6 @@
+name = "ai-creative-studio"
+main = "src/index.js"
+compatibility_date = "2026-11-05"
+
+[ai]
+binding = "AI"
