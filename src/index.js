@@ -60,7 +60,7 @@ async function getProfile(url){
    }else{
     title=metaTag(body,"og:title");description=metaTag(body,"og:description")||metaTag(body,"description");image=metaTag(body,"og:image");
     // Public embed HTML sometimes exposes a caption and media image even when the profile page does not.
-    const imgMatches=[...body.matchAll(/(?:display_url|src)\\s*[:=]\\s*["'](https:\\/\\/[^"'\\s]+\\.(?:jpg|jpeg|png|webp)[^"']*)/gi)].slice(0,8);
+    const imgMatches=[...body.matchAll(/https?:\/\/[^"' ]+\.(?:jpg|jpeg|png|webp)[^"' ]*/gi)].slice(0,8);
     for(const m of imgMatches)posts.push({caption:"",image:m[1].replace(/\\\\u0026/g,"&"),permalink:""});
     const caption=metaTag(body,"og:description");if(caption&&posts.length)posts[0].caption=caption;
    }
